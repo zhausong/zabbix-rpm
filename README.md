@@ -1,6 +1,6 @@
 zabbix-rpm是一个轻松构建zabbix监控系统的的rpm二次定制项目。
 ```
-如果你想偷懒，想把安装好之后即可访问，且服务器环境满足以下：
+如果你想偷懒，想安装好之后即可访问，并且几分钟搞定所有事情，且服务器环境满足以下：
      一台全的服务器，系统为RHEL6.X 或者CentOS6.X，注意，只支持64位系统。
      配置好网络，yum源，如果是本地yum源，会用到其他rpm包，因此，建议你使用下epel源
      rpm -ivh http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-6.noarch.rpm 
