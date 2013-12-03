@@ -25,7 +25,7 @@ zabbix-java-gateway安装
 
 说明：
     如果你只作为测试环境，只需要安装server和agent即可
-    安装过程会自动解决依赖关系，安装好之后呢，通过浏览器即可访问 http://x.x.x.x/zabbix
+    安装过程会自动解决依赖关系，安装好之后呢，通过浏览器即可访问 http://x.x.x.x/zabbix，注意防火墙设置
     默认的zabbix web登录用户为admin，密码为zabbix，
     默认的mysql密码为MysqlPassword
 
