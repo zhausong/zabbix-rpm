@@ -38,4 +38,31 @@ zabbix-java-gateway安装
     2.大规模批量安装，rpm包定制的规范，可以作为参考案例。
     3.提供了SRPM包，大家可以基于此二次定制，欢迎参与本项目。
     4.后续会集成更多模板，方便大家使用。
+    
+如何重新打包rpm呢？
+yum  install rpm-build
+useradd admin
+su - admin  
+mkdir -pv rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}  
+echo "% _topdir  /home/admin/rpmbuild" >~/.rpmmacros  
+
+rpm2cpio  zabbix-2.2.0-0.el6.zbx.src.rpm |cpio -div  #解压源码rpm包
+解压出来的文件如下
+cmdline-jmxclient-0.10.3.jar
+zabbix-2.2.0-web-php.tar.gz
+zabbix-2.2.0.tar.gz
+zabbix-java-gateway.init
+zabbix-proxy-mysql.sql
+zabbix-server-mysql.sql
+zabbix-web.conf
+zabbix2.2.0.spec
+zabbix_custom.tar.gz
+zabbix_java_gateway_cmd
+
+mv zabbix2.2.0.spec /home/admin/rpmbuild/SPECS
+mv * /home/admin/rpmbuild/SOURCES
+
+重新打包rpm，
+cd  /home/admin/rpmbuild/SPECS
+rpmbuild -ba zabbix2.2.0.spec #此处会提示你需要依赖包，依次安装
 ```
