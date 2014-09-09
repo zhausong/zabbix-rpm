@@ -19,7 +19,7 @@ shell# cd zabbix-rpm
 shell# yum localinstall  zabbix-server-2.2.0-0.el6.zbx.x86_64.rpm   \
                      zabbix-server-mysql-2.2.0-0.el6.zbx.x86_64.rpm  \
                      zabbix-web-apache-2.2.0-0.el6.zbx.noarch.rpm
-                     ```
+```
 #代理端安装   
 4 
 ```
