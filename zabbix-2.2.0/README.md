@@ -25,7 +25,8 @@ shell# yum localinstall  zabbix-server-2.2.0-0.el6.zbx.x86_64.rpm   \
 ```
 shell# yum localinstall  zabbix-proxy-2.2.0-0.el6.zbx.x86_64.rpm   \
                      zabbix-proxy-mysql-2.2.0-0.el6.zbx.x86_64.rpm 
-                     ```
+                     
+```
 #客户端安装   
 5 
 ```
