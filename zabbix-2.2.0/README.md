@@ -4,29 +4,29 @@ zabbix-rpm是一个轻松构建zabbix监控系统的的rpm二次定制项目,基
      配置好网络，yum源，如果是本地yum源，会用到其他rpm包，因此，建议你使用下epel源
      rpm -ivh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm  
      这些准备工作做好，那就开始吧，
-克隆rpm包到本地
-1. 
+#克隆rpm包到本地
+1.     
 ```
 shell# git clone https://github.com/itnihao/zabbix-rpm.git
 ```
-2. 
+2.    
 ```
 shell# cd zabbix-rpm
 ```
-服务端安装
-3. 
+#服务端安装     
+3.   
 ```
 shell# yum localinstall  zabbix-server-2.2.0-0.el6.zbx.x86_64.rpm   \
                      zabbix-server-mysql-2.2.0-0.el6.zbx.x86_64.rpm  \
                      zabbix-web-apache-2.2.0-0.el6.zbx.noarch.rpm
                      ```
-代理端安装
-4. 
+#代理端安装   
+4.  
 ```
 shell# yum localinstall  zabbix-proxy-2.2.0-0.el6.zbx.x86_64.rpm   \
                      zabbix-proxy-mysql-2.2.0-0.el6.zbx.x86_64.rpm 
                      ```
-客户端安装
+#客户端安装   
 5. 
 ```
 yum localinstall  zabbix-agentd-2.2.0-0.el6.zbx.x86_64.rpm
@@ -40,7 +40,7 @@ yum localinstall   zabbix-java-gateway-2.2.0-0.el6.zbx.x86_64.rpm
 
 
 
-说明：
+说明： 
     如果你只作为测试环境，只需要安装server和agent即可
     安装过程会自动解决依赖关系，安装好之后呢，通过浏览器即可访问 http://x.x.x.x/zabbix，注意防火墙设置
     默认的zabbix web登录用户为admin，密码为zabbix，
@@ -67,7 +67,7 @@ shell# echo "% _topdir  /home/admin/rpmbuild" >~/.rpmmacros
 shell# rpm2cpio  zabbix-2.2.0-0.el6.zbx.src.rpm |cpio -div  #解压源码rpm包
 ```
 
-解压出来的文件如下
+#解压出来的文件如下
 ```
 cmdline-jmxclient-0.10.3.jar
 zabbix-2.2.0-web-php.tar.gz
@@ -85,7 +85,7 @@ shell# mv zabbix2.2.0.spec /home/admin/rpmbuild/SPECS
 shell# mv * /home/admin/rpmbuild/SOURCES
 ```
 
-重新打包rpm，
+# 重新打包rpm，
 ```
 shell# cd  /home/admin/rpmbuild/SPECS
 shell# yum install -y gcc make mysql-devel openldap-devel libssh2-devel net-snmp-devel curl-devel unixODBC-devel OpenIPMI-devel java-devel
