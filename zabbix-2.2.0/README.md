@@ -6,20 +6,38 @@ zabbix-rpm是一个轻松构建zabbix监控系统的的rpm二次定制项目,基
      rpm -ivh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm  
      这些准备工作做好，那就开始吧，
 克隆rpm包到本地
-1. git clone https://github.com/itnihao/zabbix-rpm.git
-2. cd zabbix-rpm
+1. 
+```
+shell# git clone https://github.com/itnihao/zabbix-rpm.git
+```
+2. 
+```
+shell# cd zabbix-rpm
+```
 服务端安装
-3. yum localinstall  zabbix-server-2.2.0-0.el6.zbx.x86_64.rpm   \
+3. 
+```
+shell# yum localinstall  zabbix-server-2.2.0-0.el6.zbx.x86_64.rpm   \
                      zabbix-server-mysql-2.2.0-0.el6.zbx.x86_64.rpm  \
                      zabbix-web-apache-2.2.0-0.el6.zbx.noarch.rpm
+                     ```
 代理端安装
-4. yum localinstall  zabbix-proxy-2.2.0-0.el6.zbx.x86_64.rpm   \
-                     zabbix-proxy-mysql-2.2.0-0.el6.zbx.x86_64.rpm
+4. 
+```
+shell# yum localinstall  zabbix-proxy-2.2.0-0.el6.zbx.x86_64.rpm   \
+                     zabbix-proxy-mysql-2.2.0-0.el6.zbx.x86_64.rpm 
+                     ```
 客户端安装
-5. yum localinstall  zabbix-agentd-2.2.0-0.el6.zbx.x86_64.rpm
+5. 
+```
+yum localinstall  zabbix-agentd-2.2.0-0.el6.zbx.x86_64.rpm
+```
 
 zabbix-java-gateway安装
-6.yum localinstall   zabbix-java-gateway-2.2.0-0.el6.zbx.x86_64.rpm
+6.
+```
+yum localinstall   zabbix-java-gateway-2.2.0-0.el6.zbx.x86_64.rpm
+```
 
 
 
@@ -40,14 +58,18 @@ zabbix-java-gateway安装
     4.后续会集成更多模板，方便大家使用。
     
 如何重新打包rpm呢？
-yum  install rpm-build
-useradd admin
-su - admin  
-mkdir -pv rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}  
-echo "% _topdir  /home/admin/rpmbuild" >~/.rpmmacros  
+```
+shell# yum  install -y rpm-build
+shell# useradd admin
+shell# su - admin  
+shell# mkdir -pv rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}  
+shell# echo "% _topdir  /home/admin/rpmbuild" >~/.rpmmacros  
 
-rpm2cpio  zabbix-2.2.0-0.el6.zbx.src.rpm |cpio -div  #解压源码rpm包
+shell# rpm2cpio  zabbix-2.2.0-0.el6.zbx.src.rpm |cpio -div  #解压源码rpm包
+```
+
 解压出来的文件如下
+```
 cmdline-jmxclient-0.10.3.jar
 zabbix-2.2.0-web-php.tar.gz
 zabbix-2.2.0.tar.gz
@@ -58,11 +80,15 @@ zabbix-web.conf
 zabbix2.2.0.spec
 zabbix_custom.tar.gz
 zabbix_java_gateway_cmd
-
-mv zabbix2.2.0.spec /home/admin/rpmbuild/SPECS
-mv * /home/admin/rpmbuild/SOURCES
+```
+```
+shell# mv zabbix2.2.0.spec /home/admin/rpmbuild/SPECS
+shell# mv * /home/admin/rpmbuild/SOURCES
+```
 
 重新打包rpm，
-cd  /home/admin/rpmbuild/SPECS
-rpmbuild -ba zabbix2.2.0.spec #此处会提示你需要依赖包，依次安装
+```
+shell# cd  /home/admin/rpmbuild/SPECS
+shell# yum install -y gcc make mysql-devel openldap-devel libssh2-devel net-snmp-devel curl-devel unixODBC-devel OpenIPMI-devel java-devel
+shell# rpmbuild -ba zabbix2.2.0.spec #此处会提示你需要依赖包，依次安装
 ```
