@@ -5,35 +5,35 @@ zabbix-rpm是一个轻松构建zabbix监控系统的的rpm二次定制项目,基
      rpm -ivh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm  
      这些准备工作做好，那就开始吧，
 #克隆rpm包到本地
-1.     
+1     
 ```
 shell# git clone https://github.com/itnihao/zabbix-rpm.git
 ```
-2.    
+2   
 ```
 shell# cd zabbix-rpm
 ```
 #服务端安装     
-3.   
+3   
 ```
 shell# yum localinstall  zabbix-server-2.2.0-0.el6.zbx.x86_64.rpm   \
                      zabbix-server-mysql-2.2.0-0.el6.zbx.x86_64.rpm  \
                      zabbix-web-apache-2.2.0-0.el6.zbx.noarch.rpm
                      ```
 #代理端安装   
-4.  
+4 
 ```
 shell# yum localinstall  zabbix-proxy-2.2.0-0.el6.zbx.x86_64.rpm   \
                      zabbix-proxy-mysql-2.2.0-0.el6.zbx.x86_64.rpm 
                      ```
 #客户端安装   
-5. 
+5 
 ```
 yum localinstall  zabbix-agentd-2.2.0-0.el6.zbx.x86_64.rpm
 ```
 
 zabbix-java-gateway安装
-6.
+6
 ```
 yum localinstall   zabbix-java-gateway-2.2.0-0.el6.zbx.x86_64.rpm
 ```
